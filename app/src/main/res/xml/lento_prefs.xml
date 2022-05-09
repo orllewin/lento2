@@ -1,0 +1,19 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreferenceCompat
+        app:key="debug_mode"
+        app:title="Debug mode"/>
+
+    <SwitchPreferenceCompat
+        app:key="fullscreen"
+        app:title="Fullscreen preview"/>
+
+    <ListPreference
+        app:key="ratio"
+        app:title="Aspect Ratio"
+        android:summary="-"
+        app:entries="@array/ratio_labels"
+        app:entryValues="@array/ratio_keys" />
+
+</PreferenceScreen>

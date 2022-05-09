@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/camera_ui_container"
+    android:layoutDirection="ltr"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/settings_button_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingLeft="8dp"
+        android:paddingTop="3dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="3dp"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/portrait_settings_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:clickable="false"
+            android:src="@drawable/vector_settings"
+            android:tint="#ffffff" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/portrait_settings_arrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_toEndOf="@+id/portrait_settings_icon"
+            android:clickable="false"
+            android:src="@drawable/vector_down"
+            android:tint="#ffffff" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/portrait_shutter_area"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_alignParentBottom="true"
+        android:background="#44000000">
+
+        <!-- Camera control and gallery buttons -->
+        <ImageButton
+            android:id="@+id/portrait_camera_switch_button"
+            android:layout_width="@dimen/round_button_medium"
+            android:layout_height="@dimen/round_button_medium"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/def_button_margin"
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_switch"
+            android:contentDescription="@string/switch_camera_button_alt" />
+
+        <ImageButton
+            android:id="@+id/portrait_camera_capture_button"
+            android:layout_width="@dimen/round_button_large"
+            android:layout_height="@dimen/round_button_large"
+            android:scaleType="fitCenter"
+            android:background="@drawable/ic_shutter"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/capture_button_alt" />
+
+        <ImageButton
+            android:id="@+id/photo_view_button"
+            android:layout_width="@dimen/round_button_medium"
+            android:layout_height="@dimen/round_button_medium"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/def_button_margin"
+            android:scaleType="fitCenter"
+            android:background="@drawable/ic_outer_circle"
+            app:srcCompat="@drawable/ic_photo"
+            android:contentDescription="@string/gallery_button_alt" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/landscape_shutter_area"
+        android:layout_width="140dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:background="#44000000">
+
+        <!-- Camera control and gallery buttons -->
+        <ImageButton
+            android:id="@+id/landscape_camera_switch_button"
+            android:layout_width="@dimen/round_button_medium"
+            android:layout_height="@dimen/round_button_medium"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/def_button_margin"
+            android:scaleType="fitCenter"
+            android:rotation="90"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_switch"
+            android:contentDescription="@string/switch_camera_button_alt" />
+
+        <ImageButton
+            android:id="@+id/landscape_camera_capture_button"
+            android:layout_width="@dimen/round_button_large"
+            android:layout_height="@dimen/round_button_large"
+            android:scaleType="fitCenter"
+            android:background="@drawable/ic_shutter"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/capture_button_alt" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/settings_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/landscape_shutter_area"
+        android:visibility="gone"
+        android:background="@drawable/settings_background"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="164dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="16dp">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Debug -->
+            <RelativeLayout
+                android:id="@+id/debug_settings_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/debug_small_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@color/small_title"
+                    android:text="Debug"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/debug_small_subtitle"
+                    android:layout_below="@+id/debug_small_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_medium"
+                    android:textColor="@color/small_subtitle"
+                    android:drawablePadding="6dp"
+                    android:text="On"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/settings_debug_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:checked="true"
+                    android:textSize="18sp"
+                    app:thumbTint="#ffffff"
+                    app:trackTint="#ffffff"
+                    android:textColor="#ffffff"/>
+
+            </RelativeLayout>
+
+
+            <!-- Preview Scale -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/preview_scale_small_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@color/small_title"
+                    android:text="Preview"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/preview_scale_small_subtitle"
+                    android:layout_below="@+id/preview_scale_small_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_medium"
+                    android:textColor="@color/small_subtitle"
+                    android:text="Fullscreen"/>
+
+                <RadioGroup
+                    android:id="@+id/preview_scale_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal"
+                    android:layout_centerVertical="true">
+
+                    <orllewin.lento.views.RadioToggle
+                        android:id="@+id/preview_cropped_toggle"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        app:drawable="@drawable/vector_preview_crop"
+                        app:selectedForegroundTint="#000000"
+                        app:unselectedForegroundTint="#ffffff"
+                        app:selectedBackgroundColor="#FFD4D4"
+                        app:unselectedBackgroundColor="#3a3a3a"
+                        android:layout_marginEnd="8dp"/>
+
+                    <orllewin.lento.views.RadioToggle
+                        android:id="@+id/preview_fullscreen_toggle"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        app:selectedForegroundTint="#000000"
+                        app:unselectedForegroundTint="#ffffff"
+                        app:selectedBackgroundColor="#FFD4D4"
+                        app:unselectedBackgroundColor="#3a3a3a"
+                        app:drawable="@drawable/vector_preview_fullscreen" />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+            <!-- Aspect Ratio -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/ratio_small_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@color/small_title"
+                    android:text="Ratio"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/ratio_small_subtitle"
+                    android:layout_below="@+id/ratio_small_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_medium"
+                    android:textColor="@color/small_subtitle"
+                    android:text="Wide Crop (16:9)"/>
+
+                <RadioGroup
+                    android:id="@+id/aspect_ratio_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:orientation="horizontal"
+                    android:layout_centerVertical="true">
+
+                    <orllewin.lento.views.RadioToggle
+                        android:id="@+id/ratio_4_3_toggle"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        app:drawable="@drawable/vector_ratio_4_3_portrait"
+                        app:selectedForegroundTint="#000000"
+                        app:unselectedForegroundTint="#ffffff"
+                        app:selectedBackgroundColor="#FFD4D4"
+                        app:unselectedBackgroundColor="#3a3a3a"
+                        android:layout_marginEnd="8dp"/>
+
+                    <orllewin.lento.views.RadioToggle
+                        android:id="@+id/ratio_16_9_toggle"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        app:selectedForegroundTint="#000000"
+                        app:unselectedForegroundTint="#ffffff"
+                        app:selectedBackgroundColor="#FFD4D4"
+                        app:unselectedBackgroundColor="#3a3a3a"
+                        app:drawable="@drawable/vector_ratio_16_9_portrait" />
+
+                </RadioGroup>
+
+            </RelativeLayout>
+
+            <!-- Anamorphic -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/anamorphic_small_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_small"
+                    android:textColor="@color/small_title"
+                    android:text="Anamorphic"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/anamorphic_small_subtitle"
+                    android:layout_below="@+id/anamorphic_small_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_medium"
+                    android:textColor="@color/small_subtitle"
+                    android:drawableEnd="@drawable/vector_info"
+                    android:drawableTint="@color/small_subtitle"
+                    android:drawablePadding="6dp"
+                    android:text="Off"/>
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/anamorphic_scale_factor"
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:text="1.33"
+                    android:hint="Scale Factor"
+                    android:textColor="#ffffff"
+                    android:background="@null"
+                    android:layout_toStartOf="@+id/settings_anamorphic_switch"
+                    android:layout_centerVertical="true"/>
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/settings_anamorphic_switch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="18sp"
+                    app:thumbTint="#ffffff"
+                    app:trackTint="#ffffff"
+                    android:textColor="#ffffff"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/all_settings_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="All Settings"/>
+            </RelativeLayout>
+
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
